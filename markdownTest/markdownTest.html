@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 引入 marked 库 -->
+    <script src="./marked.umd.min.js"></script>
+
+    <!-- 引入 highlight.js 库 + 样式 -->
+    <link rel="stylesheet" href="./github.min.css">
+    <script src="./highlight.min.js"></script>
+</head>
+<body>
+<!-- HTML结构：输入区 + 预览区 -->
+    <div class="container">
+      <textarea id="markdownInput" placeholder="请输入Markdown内容..."># 标题
+**加粗文本**
+`代码片段`
+- 列表项1
+- 列表项2
+      </textarea>
+    <div id="previewArea" class="markdown-body"></div>
+</div>
+
+<script>
+    // 1. 获取DOM元素
+    const input = document.getElementById('markdownInput');
+    const preview = document.getElementById('previewArea');
+
+    // 2. 配置marked（启用代码高亮）
+    marked.setOptions({
+        highlight: (code, lang) => {
+            // 若指定语言且highlight支持，则高亮；否则默认处理
+            return lang && hljs.getLanguage(lang)
+                ? hljs.highlight(code, { language: lang }).value
+                : hljs.highlightAuto(code).value;
+        },
+        breaks: true, // 支持换行符 (\n) 转换为<br>
+        gfm: true // 支持GitHub Flavored Markdown（如表格、删除线）
+    });
+
+    // 3. 渲染函数：将Markdown转为HTML并插入预览区
+    function renderMarkdown() {
+        const markdownText = input.value;
+        const html = marked.parse(markdownText); // 核心解析方法
+        preview.innerHTML = html;
+    }
+
+    // 4. 初始化渲染 + 监听输入变化
+    renderMarkdown();
+    input.addEventListener('input', renderMarkdown);
+</script>
+
+<!-- 基础样式：避免排版混乱 -->
+<style>
+    .container { display: flex; gap: 20px; margin: 20px; }
+    #markdownInput { width: 40%; height: 500px; padding: 10px; }
+    #previewArea { width: 50%; padding: 10px; border: 1px solid #eee; }
+    /* 配合highlight.js的代码块样式 */
+    pre code { display: block; padding: 10px; background: #1e1e1e; color: #fff; border-radius: 4px; }
+</style>
+</body>
+</html>
