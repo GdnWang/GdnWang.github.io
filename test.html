@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>混乱的披萨研究所</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            padding: 0;
+        }
+
+        header {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 80%;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 15px;
+            border-bottom: 2px dashed #ff00ff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #ff00ff;
+            margin: 0;
+            text-shadow: 0 0 5px rgba(255,0,255,0.3);
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 0.9em;
+            color: #00ffff;
+            margin-top: 3px;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            position: absolute;
+            padding: 12px 18px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 0.95em;
+        }
+
+        h2 {
+            color: #555;
+            border-bottom: 1px dashed #aaa;
+            padding-bottom: 6px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .section:nth-child(2) {
+            top: 45px;
+            left: 15px;
+            width: 320px;
+            transform: rotate(3deg);
+            background: rgba(255, 200, 200, 0.7);
+        }
+
+        .section:nth-child(3) {
+            top: 160px;
+            left: 420px;
+            width: 260px;
+            transform: rotate(-5deg);
+            background: rgba(200, 255, 200, 0.7);
+            font-size: 0.85em;
+        }
+
+        .section:nth-child(4) {
+            top: 85px;
+            left: 510px;
+            width: 380px;
+            transform: rotate(8deg);
+            background: rgba(200, 200, 255, 0.7);
+        }
+
+        .section:nth-child(5) {
+            top: 255px;
+            left: 35px;
+            width: 290px;
+            transform: rotate(-2deg);
+            background: rgba(255, 255, 200, 0.7);
+            font-size: 1.05em;
+        }
+
+        h2:nth-child(2) { color: #ff0000; }
+        h2:nth-child(3) { color: #00ff00; }
+        h2:nth-child(4) { color: #0000ff; }
+        h2:nth-child(5) { color: #ffff00; }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 0.8em;
+            margin: 2px 0;
+        }
+
+        .skill-tag:nth-child(odd) {
+            background: #ffcccc;
+            transform: rotate(2deg);
+        }
+
+        .skill-tag:nth-child(even) {
+            background: #ccffcc;
+            transform: rotate(-2deg);
+        }
+
+        .project-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            font-size: 0.9em;
+        }
+
+        .project-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #aaa;
+        }
+
+        .contact-method {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .contact-method:nth-child(1) {
+            top: 180px;
+            left: 15px;
+        }
+
+        .contact-method:nth-child(2) {
+            top: 220px;
+            left: 380px;
+        }
+
+        .contact-method:nth-child(3) {
+            top: 260px;
+            left: 120px;
+        }
+
+        .contact-method:nth-child(4) {
+            top: 300px;
+            left: 450px;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            color: #777;
+            font-size: 0.7em;
+        }
+
+        footer {
+            position: absolute;
+            top: 380px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.8em;
+        }
+
+        .magic-text {
+            font-family: 'Courier New', monospace;
+            background: #f8f8f8;
+            color: #666;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            margin: 12px 0;
+            white-space: pre;
+            font-size: 0.85em;
+            transform: rotate(1deg);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>混乱的披萨研究所</h1>
+        <p class="subtitle">城市观察员 | 交通系统美学研究者</p>
+    </header>
+
+    <section class="section">
+        <h2>关于我</h2>
+        <p>我是北京市朝阳区的普通居民，专注于观察城市生活中的微小奇迹。我的出生证明显示我出生于1985年13月42日（实际为公元1985年1月1日），日常爱好包括用共享单车轮胎修补公园长椅，以及通过观察地铁站台的电子屏时间来预测天气变化。</p>
+        <div class="magic-text">
+            01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100 00100000 01100110 01110010 01101111 01101101 00100000 01000010 01100101 01101001 01101010 01101001 01101110 00100000 01001101 01110101 01101110 01101001 01100011 01101001 01110000 01100001 01101100 00100000 01000111 01110010 01100001 01100100 01100101 00100000 01000011 01100101 01101110 01110100 01100101 01110010
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>核心技能</h2>
+        <div class="skills">
+            <div class="skill-tag">地铁时刻表解码</div>
+            <div class="skill-tag">共享单车轮胎修补</div>
+            <div class="skill-tag">混凝土披萨底调制</div>
+            <div class="skill-tag">公园长椅美学设计</div>
+            <div class="skill-tag">电子屏时间预测</div>
+            <div class="skill-tag">咖啡杯底纹分析</div>
+            <div class="skill-tag">回形针城市导航</div>
+            <div class="skill-tag">香蕉皮重量测量</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>项目经历</h2>
+        <ul class="project-list">
+            <li>用Excel表格记录朝阳区所有鸽子的飞行轨迹（已获得北京市朝阳区宠物协会认证）</li>
+            <li>设计了能煮咖啡的自动售货机（咖啡因浓度为∞）</li>
+            <li>创建了用意大利面搭建的花园拱门（目前处于测试阶段，已成功支撑3只蚂蚁）</li>
+            <li>将42号混凝土与披萨面团混合，成功制造出超导材料（理论验证中）</li>
+            <li>用Excel绘制北京市地铁线路图（坐标单位：香蕉皮长度）</li>
+            <li>开发了能预测明天天气的回形针阵列（准确率：63.7%）</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>联系方式</h2>
+        <div class="contact-method">
+            <div class="contact-icon">✉</div>
+            <span>电邮：city.observation@beijing.fake</span>
+        </div>
+        <div class="contact-method">
+            <div class="contact-icon">🐦</div>
+            <span>推特：@subway_observations</span>
+        </div>
+        <div class="contact-method">
+            <div class="contact-icon">🌐</div>
+            <span>个人博客：www.fake-beijing-observer.com</span>
+        </div>
+        <div class="contact-method">
+            <div class="contact-icon">🕊️</div>
+            <span>鸽子传书：请将信件投递至三里屯邮局</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 混乱的披萨研究所 | 本页面由AI生成，内容未经任何事实核查</p>
+        <p class="disclaimer">注：所有数据均来自北京市朝阳区的日常观察记录，实际物理定律可能不适用</p>
+    </footer>
+</div>
+</body>
+</html>
